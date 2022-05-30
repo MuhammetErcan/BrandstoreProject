@@ -16,13 +16,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import static utils.ExcelUtility.getCurrentTime;
 
 
 public class Hook  {
     public static String path = "src/test/java/logsAndReports/";
-    public static String fileName="excelLogsi.xlsx";
+    public static String fileName="excelLogs.xlsx";
     public static String sheet = "sayfa";
     public static String tarihSaat = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss"));
+
 
     @BeforeAll
     public static void beforeAll(){
@@ -32,22 +34,26 @@ public class Hook  {
     @Before
     public void beforeHook(Scenario scenario){
 
-        ExcelUtility.writeToExcel( new LinkedList<>(Arrays.asList(scenario.getName(), "senaryo başladı",tarihSaat)));
-
+        ExcelUtility.writeToExcel(scenario.getName(), "senaryo başladı",getCurrentTime());
+        ExcelUtility.writeToExcel("ali");
     }
 
     @After
     public void afterHook(Scenario scenario){
         if (scenario.isFailed()){
             System.out.println("başarısız");
-            ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList(scenario.getName(), "başarısız",tarihSaat)));
+            ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList(scenario.getName(), "başarısız",getCurrentTime())));
         }
         else {
-            ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList(scenario.getName(), "başarılı",tarihSaat)));
+            ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList(scenario.getName(), "başarılı",getCurrentTime())));
         }
 
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList(scenario.getName(), "bitti",tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList(scenario.getName(), "bitti",getCurrentTime())));
     }
+
+
+
+
 
 
 

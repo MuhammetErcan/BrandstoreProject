@@ -24,7 +24,7 @@ public class MyStepdefs2 extends Homepage {
                 Assert.assertTrue(!webElement.getAttribute("src").isEmpty());
             }
         }
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","Anasayfada tüm resimler tanımlı",Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","Anasayfada tüm resimler tanımlı",ExcelUtility.getCurrentTime())));
     }
 
     @Given("user goes to homepage")

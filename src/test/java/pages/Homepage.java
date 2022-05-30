@@ -1,7 +1,7 @@
 package pages;
 
 import Hook.Hook;
-import javafx.scene.control.Tab;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
@@ -24,7 +24,7 @@ public class Homepage extends ParentClass implements Locators {
             clickTo(lNext);
         }
 
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("", "Alle produkte tüm resimler tanımlı", Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("", "Alle produkte tüm resimler tanımlı", ExcelUtility.getCurrentTime())));
     }
 
     public void isTherePriceAllProducts() {
@@ -38,7 +38,7 @@ public class Homepage extends ParentClass implements Locators {
             clickTo(lNext);
         }
 
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("", "Alle produkte ÜRÜNLERDE FİYAT VAR", Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("", "Alle produkte ÜRÜNLERDE FİYAT VAR", ExcelUtility.getCurrentTime())));
     }
 
     public void controlKategorienDropdownMethod() {
@@ -63,7 +63,7 @@ public class Homepage extends ParentClass implements Locators {
             Assert.assertEquals(numberInName, selectedKategorienProductsSize);
         }
 
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("", "kategoriler dropdown calisiyor", Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("", "kategoriler dropdown calisiyor", ExcelUtility.getCurrentTime())));
     }
 
     public void sortByPriceAscendingMethod() {
@@ -91,7 +91,7 @@ public class Homepage extends ParentClass implements Locators {
             clickTo(lNext);
         }
 
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("", "fiyat artan sıralama calisiyor", Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("", "fiyat artan sıralama calisiyor", ExcelUtility.getCurrentTime())));
     }
 
     public void sortByPriceDescMethod() {
@@ -119,7 +119,7 @@ public class Homepage extends ParentClass implements Locators {
             clickTo(lNext);
         }
 
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("", "fiyat azalan sıralama calisiyor", Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("", "fiyat azalan sıralama calisiyor", ExcelUtility.getCurrentTime())));
     }
 
     public void sortByRatingMethod() {
@@ -141,6 +141,8 @@ public class Homepage extends ParentClass implements Locators {
         build.perform();
 
          */
+
+
     }
 
     public void filterMethod(By inputLocator,By lClickButton,  String text) {
@@ -168,7 +170,7 @@ public class Homepage extends ParentClass implements Locators {
         Assert.assertTrue(tableString.contains(choosenColourName));
 
 
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("", text + " filtreleme calisiyor", Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("", text + " filtreleme calisiyor", ExcelUtility.getCurrentTime())));
     }
 
     public void addToFavoriteRandomMethod() {
@@ -191,7 +193,7 @@ public class Homepage extends ParentClass implements Locators {
     public void deleteFavoriteMethod(){
         clickTo(lRemoveFavoriteButton);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(lFavoriteProductNameInWunschlist));
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("",  " Favorilere ürün ekleyip, kaldirma", Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("",  " Favorilere ürün ekleyip, kaldirma", ExcelUtility.getCurrentTime())));
     }
 
     public void searchProductOnMenuMethod(String text) {
@@ -203,7 +205,7 @@ public class Homepage extends ParentClass implements Locators {
             Assert.assertTrue(product.getText().contains(text));
 
         }
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","menü kısmında arama fonsiyonu düzgün çalışıyor",Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","menü kısmında arama fonsiyonu düzgün çalışıyor",ExcelUtility.getCurrentTime())));
     }
 
     public void searchProductLeft(String text){
@@ -215,7 +217,7 @@ public class Homepage extends ParentClass implements Locators {
             Assert.assertTrue(product.getText().contains(text));
 
         }
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","sol alt kısımda arama fonsiyonu düzgün çalışıyor",Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","sol alt kısımda arama fonsiyonu düzgün çalışıyor",ExcelUtility.getCurrentTime())));
 
     }
 
@@ -247,7 +249,7 @@ public class Homepage extends ParentClass implements Locators {
         }
         Assert.assertTrue(driver.findElement(lComparisonFistProductName).getText().contains(firstProductName));
        Assert.assertTrue(driver.findElement(lComparisonSecondProductName).getText().contains(secondProductName));
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","ürün karşılaştırma çalışıyor",Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","ürün karşılaştırma çalışıyor",ExcelUtility.getCurrentTime())));
     }
 
     public void addProductToCartMethod() {
@@ -272,7 +274,7 @@ public class Homepage extends ParentClass implements Locators {
             sleep(2000);
             Assert.assertTrue(driver.findElement(lProductinWarenkorb).getText().contains(productName));
         }
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","Ürünler sepete dogru bilgiler ile eklenebiliyor mu",Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","Ürünler sepete dogru bilgiler ile eklenebiliyor mu",ExcelUtility.getCurrentTime())));
 
     }
 
@@ -288,7 +290,7 @@ public class Homepage extends ParentClass implements Locators {
         double justPriceDouble2=Double.parseDouble(justPrice2);
         double expected= justPriceDouble * 2.0;
         Assert.assertEquals(justPriceDouble2,expected);
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","Sepette gücelleme islemi yapilabiliyor",Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","Sepette gücelleme islemi yapilabiliyor",ExcelUtility.getCurrentTime())));
     }
 
     public void buyProductMethod() {
@@ -313,7 +315,7 @@ public class Homepage extends ParentClass implements Locators {
         clickTo(lSendButton);
         sleep(3000);
         waitFor(lTextForBuy,WaitConditions.visible);
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","ürün satın alma başarılı",Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","ürün satın alma başarılı",ExcelUtility.getCurrentTime())));
         String bestSellerNumString=driver.findElement(lBestSellerNum).getText();
         clickTo(lMeinKonto);
         waitFor(lGoToBestellungenButton,WaitConditions.clickable);
@@ -321,7 +323,7 @@ public class Homepage extends ParentClass implements Locators {
         String bestellungNumStringLast=driver.findElement(lBestellungNum).getText();
         Assert.assertTrue(bestellungNumStringLast.contains(bestSellerNumString));
         System.out.println("işlem başarılı");
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","satın alınan ürün siparişler bölümünde mevcut",Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","satın alınan ürün siparişler bölümünde mevcut",ExcelUtility.getCurrentTime())));
 
 
 

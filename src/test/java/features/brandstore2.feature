@@ -27,6 +27,10 @@ Feature: Feature1
     And sort by rating
     Then driver quit
 
+  Scenario: Senaryo14  Tüm ürünler (Ürün filtreleme düzgün calisiyor mu(renk)?)
+    Given user goes to homepage
+    And  go to alle produkte
+    Given filter nach preis
 
   Scenario: Senaryo5  Tüm ürünler (Ürün filtreleme düzgün calisiyor mu(renk)?)
     Given user goes to homepage

@@ -6,6 +6,9 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,6 +37,13 @@ public class ExcelUtility {
             listofValues.add(listOfCells);
         }
         return listofValues;
+    }
+    public static void writeToExcel (String...datas){
+        List<String>data=new ArrayList<>();
+        for (String s : datas) {
+            data.add(s);
+        }
+        writeToExcel(Hook.path+Hook.fileName,Hook.sheet,data);
     }
 
     public static void writeToExcel (List<String> data){
@@ -100,5 +110,10 @@ public class ExcelUtility {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static String getCurrentTime(){
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
     }
 }

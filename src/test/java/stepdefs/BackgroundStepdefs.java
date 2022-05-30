@@ -39,7 +39,7 @@ public class BackgroundStepdefs extends Homepage {
         sendKeysTo(lInputPassword,pass);
         clickTo(lLoginSubmitButton);
         Assert.assertTrue(driver.findElement(lAssertLogin).getText().contains("Mein Konto"));
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","Dogru kullanici ve sifre ile giris yapildi",Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","Dogru kullanici ve sifre ile giris yapildi",ExcelUtility.getCurrentTime())));
     }
 
 
@@ -60,7 +60,7 @@ public class BackgroundStepdefs extends Homepage {
 
         Assert.assertEquals(productName,lastVievedProduktName);
 
-        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","Enson tiklanan ürün sol kategoriler altinda bulunan Son görüntülenenler kisminda listeleniyor",Hook.tarihSaat)));
+        ExcelUtility.writeToExcel(new ArrayList<>(Arrays.asList("","Enson tiklanan ürün sol kategoriler altinda bulunan Son görüntülenenler kisminda listeleniyor",ExcelUtility.getCurrentTime())));
 
     }
 
